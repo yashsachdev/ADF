@@ -1,0 +1,19 @@
+{
+	"name": "datapipelines5677",
+	"properties": {
+		"globalConfigurations": {
+			"mountedConfiguration": [
+				{
+					"workspaceId": "32ba1599-4e74-4fc1-aa95-cbc65e33179e",
+					"artifactId": "ba4fce28-a7b2-4642-8b8a-96778db6e870"
+				}
+			]
+		}
+	},
+	"location": "southindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "c7406da4-1f6c-40f8-9741-8d2823df5973",
+		"tenantId": "5095e2b3-3149-453a-9ad6-e70d5d1884e1"
+	}
+}

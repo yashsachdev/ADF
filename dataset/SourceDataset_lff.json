@@ -1,0 +1,91 @@
+{
+	"name": "SourceDataset_lff",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"sheetName": "Sale",
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "WideWorldImporters.xlsx",
+				"container": "posts"
+			},
+			"firstRowAsHeader": true
+		},
+		"schema": [
+			{
+				"name": "Sale Key",
+				"type": "String"
+			},
+			{
+				"name": "City Key",
+				"type": "String"
+			},
+			{
+				"name": "Customer Key",
+				"type": "String"
+			},
+			{
+				"name": "Stock Item Key",
+				"type": "String"
+			},
+			{
+				"name": "Invoice Date Key",
+				"type": "String"
+			},
+			{
+				"name": "Delivery Date Key",
+				"type": "String"
+			},
+			{
+				"name": "Salesperson Key",
+				"type": "String"
+			},
+			{
+				"name": "WWI Invoice ID",
+				"type": "String"
+			},
+			{
+				"name": "Quantity",
+				"type": "String"
+			},
+			{
+				"name": "Unit Price",
+				"type": "String"
+			},
+			{
+				"name": "Tax Rate",
+				"type": "String"
+			},
+			{
+				"name": "Total Excluding Tax",
+				"type": "String"
+			},
+			{
+				"name": "Tax Amount",
+				"type": "String"
+			},
+			{
+				"name": "Profit",
+				"type": "String"
+			},
+			{
+				"name": "Total Including Tax",
+				"type": "String"
+			},
+			{
+				"name": "Total Dry Items",
+				"type": "String"
+			},
+			{
+				"name": "Total Chiller Items",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
