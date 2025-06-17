@@ -1,0 +1,25 @@
+{
+	"name": "trigger1",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "CopyPipeline_Delimited",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/posts/blobs/",
+			"blobPathEndsWith": "WideWorldImporters.csv",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/69ef76ad-d6d7-4c36-9651-f1c5bff27235/resourceGroups/YashSachdevWebsite/providers/Microsoft.Storage/storageAccounts/blob5677",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}
