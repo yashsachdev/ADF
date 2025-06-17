@@ -1,0 +1,112 @@
+{
+	"name": "dataflow1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DestinationDataset_lff",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "SqlServerTable1",
+						"type": "DatasetReference"
+					},
+					"name": "sink1",
+					"rejectedDataLinkedService": {
+						"referenceName": "AzureBlobStorage2",
+						"type": "LinkedServiceReference"
+					}
+				}
+			],
+			"transformations": [],
+			"scriptLines": [
+				"source(output(",
+				"          {Sale Key} as string,",
+				"          {City Key} as string,",
+				"          {Customer Key} as string,",
+				"          {Stock Item Key} as string,",
+				"          {Invoice Date Key} as string,",
+				"          {Delivery Date Key} as string,",
+				"          {Salesperson Key} as string,",
+				"          {WWI Invoice ID} as string,",
+				"          Quantity as string,",
+				"          {Unit Price} as string,",
+				"          {Tax Rate} as string,",
+				"          {Total Excluding Tax} as string,",
+				"          {Tax Amount} as string,",
+				"          Profit as string,",
+				"          {Total Including Tax} as string,",
+				"          {Total Dry Items} as string,",
+				"          {Total Chiller Items} as string",
+				"     ),",
+				"     allowSchemaDrift: false,",
+				"     validateSchema: true,",
+				"     ignoreNoFilesFound: false,",
+				"     skipLines: 1) ~> source1",
+				"source1 sink(allowSchemaDrift: false,",
+				"     validateSchema: true,",
+				"     input(",
+				"          {Sale Staging Key} as long,",
+				"          {City Key} as integer,",
+				"          {Customer Key} as integer,",
+				"          {Bill To Customer Key} as integer,",
+				"          {Stock Item Key} as integer,",
+				"          {Invoice Date Key} as date,",
+				"          {Delivery Date Key} as date,",
+				"          {Salesperson Key} as integer,",
+				"          {WWI Invoice ID} as integer,",
+				"          Description as string,",
+				"          Package as string,",
+				"          Quantity as integer,",
+				"          {Unit Price} as decimal(18,2),",
+				"          {Tax Rate} as decimal(18,3),",
+				"          {Total Excluding Tax} as decimal(18,2),",
+				"          {Tax Amount} as decimal(18,2),",
+				"          Profit as decimal(18,2),",
+				"          {Total Including Tax} as decimal(18,2),",
+				"          {Total Dry Items} as integer,",
+				"          {Total Chiller Items} as integer,",
+				"          {WWI City ID} as integer,",
+				"          {WWI Customer ID} as integer,",
+				"          {WWI Bill To Customer ID} as integer,",
+				"          {WWI Stock Item ID} as integer,",
+				"          {WWI Salesperson ID} as integer,",
+				"          {Last Modified When} as timestamp",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     saveOrder: 1,",
+				"     mapColumn(",
+				"          {City Key},",
+				"          {Customer Key},",
+				"          {Stock Item Key},",
+				"          {Invoice Date Key},",
+				"          {Delivery Date Key},",
+				"          {Salesperson Key},",
+				"          {WWI Invoice ID},",
+				"          Quantity,",
+				"          {Unit Price},",
+				"          {Tax Rate},",
+				"          {Total Excluding Tax} = {Total Including Tax},",
+				"          {Tax Amount},",
+				"          Profit,",
+				"          {Total Including Tax},",
+				"          {Total Dry Items},",
+				"          {Total Chiller Items}",
+				"     )) ~> sink1"
+			]
+		}
+	}
+}
